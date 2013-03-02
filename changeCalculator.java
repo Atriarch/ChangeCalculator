@@ -1,4 +1,4 @@
-import java.math.*;
+//import java.math.*;
 import java.lang.Math;
 import javax.swing.*;
 import java.text.DecimalFormat;
@@ -38,13 +38,29 @@ public static String formatDecimal(double number)
 public static void main(String args[]){
 //inputting the user input into a string, checking for empty string
 change = JOptionPane.showInputDialog("How much money do you have?");
-	if (change == null)
+
+//checks to see if the input is a number.
+boolean check = true;
+while(check){
+	try
+	{
+	Double.parseDouble(change);
+	check = false;
+	}
+	catch(NumberFormatException nfe){
+		change = JOptionPane.showInputDialog(null,"Please enter a change amount: ");
+	}	
+}
+
+
+/*if (change == null)
 		System.exit(0);
 	if (change == "")
 		{
 		JOptionPane.showMessageDialog(null,"Please enter a change amount.");
 		System.exit(0);
 		}
+	*/
 //formatting the inputed string into a double (0.00 formatting)
 firstDecimalChange = Double.parseDouble(change);
 DecimalFormat secondDecimalChange = new DecimalFormat("0.00");
